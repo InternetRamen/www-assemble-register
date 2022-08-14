@@ -90,6 +90,13 @@ export default function Register({ notFound, registrationRecord, params }) {
         </Box>
       </Card>
       <Card px={[4, 4]} py={[4, 4]} mt={4}>
+        <Heading as="h1" sx={{ fontSize: '24px' }}>
+          Interest Form
+          <br></br>
+          <Text sx={{ fontSize: '16px' }}>
+            This form is for interest and is completely non-binding.
+          </Text>
+        </Heading>
         {manifest.questions.map((sectionItem, sectionIndex) => {
           if (typeof sectionItem.check != 'undefined') {
             if (sectionItem.check(data)) {
@@ -289,7 +296,7 @@ export default function Register({ notFound, registrationRecord, params }) {
             </Text>{' '}
             their registration website.
             <br></br>
-            Picture credits to Arjun Rao
+            Picture credits to Arjun Rao and Kevin Ly 2022
           </Text>
         </Box>
       </Card>
