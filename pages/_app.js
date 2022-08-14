@@ -44,7 +44,6 @@ export default class App extends NextApp {
               height: '100vh',
               width: '100vw',
               backgroundImage: 'url("/arjun-bg.jpg")',
-              backdropFilter: 'blur(10px)',
               backgroundSize: 'cover',
               backgroundPosition: 'bottom-left',
               overflowY: 'scroll'
