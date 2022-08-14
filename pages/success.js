@@ -33,17 +33,19 @@ export default function Register({ notFound, registrationRecord, params }) {
         </Text>
         <br />
         <Text>
-          ❤️ You're on the waitlist! We really hope we can meet you! Make sure you check your email in
-          the coming days and weeks for important updates. Also, check out the{' '}
+          ❤️ Welcome to poolesville_hacks! This form really helps us determine
+          how much food to buy, where to do host, and more! Make sure you check
+          your email in the coming months for important updates. Also,
+          check out {' '}
           <Text
             as={'a'}
-            href="https://hackclub.com/slack"
+            href="https://discord.gg/ghqvB9adX5"
             target="_blank"
             sx={{ color: 'red' }}
           >
-            Hack Club Slack
-          </Text>{' '}
-          if you'd like to meet other hackers.
+            our discord
+          </Text>
+          .
         </Text>
       </Card>
     </Container>

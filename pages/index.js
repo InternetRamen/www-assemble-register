@@ -22,11 +22,11 @@ import nookies from 'nookies'
 import { useRouter } from 'next/router'
 import { toast, ToastContainer } from 'react-nextjs-toast'
 
-console.log(requiredList);
+console.log(requiredList)
 
 export default function Register({ notFound, registrationRecord, params }) {
   const [data, setData] = useState({})
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(false)
 
   let keys = manifest.questions.flatMap(x => x.items.map(y => y.key))
 
@@ -36,7 +36,11 @@ export default function Register({ notFound, registrationRecord, params }) {
     return <Error statusCode="404" />
   }
   return (
-    <Container py={4} variant="copy">
+    <Container
+      py={4}
+      variant="copy"
+    
+    >
       <ToastContainer align="right" />
       <Card
         px={[4, 4]}
@@ -61,16 +65,18 @@ export default function Register({ notFound, registrationRecord, params }) {
               }}
               as="div"
             >
-              Join The Waitlist For{' '}
+              Join us for{' '}
               <Text
                 sx={{
                   textDecoration: 'none',
                   color: 'blue',
                   cursor: 'pointer'
                 }}
-                onClick={() => window.open('https://assemble.hackclub.com')}
+                onClick={() =>
+                  window.open('https://poolesvillehacks.tech', '_blank')
+                }
               >
-                Assemble
+                poolesville_hacks!
               </Text>
               !
             </Text>
@@ -88,35 +94,6 @@ export default function Register({ notFound, registrationRecord, params }) {
         </Box>
       </Card>
       <Card px={[4, 4]} py={[4, 4]} mt={4}>
-        <Box bg="red" p={3} mb={3} sx={{ borderRadius: 3, color: 'white' }}>
-          👋 Hey there! You may notice this form has switched over to being
-          a waitlist. The event is currently over-subscribed, however, we expect
-          places to arise and will be offering these places on a first-come-first-serve
-          basis (you'll be notified via email on the Monday before the hackathon).
-        </Box>
-        <Box bg="sunken" p={3} mb={3} sx={{ borderRadius: 3 }}>
-          This summer, we’re going to return in-person high-school hackathons to
-          San Francisco. Our goal is to kick off a new renaissance.
-          <br />
-          <br />
-          We invite you to come out and join us. Not through Zoom or Discord,
-          but IRL out in the Bay Area from August 5th 6:00pm to August 7th
-          12:00pm. We’ll be hosted at the fantastic Figma HQ on Market Street in
-          the heart of San Francisco.
-          <br />
-          <br />
-          Over the weekend, you’ll explore the Bay Area during your free time,
-          hack with co-conspirators and experience
-          the energy of being in-person again. Together, we’ll Assemble to form
-          the first IRL high school hackathon on this side of the pandemic.
-          <br />
-          <br />
-          We're so excited to meet you at Assemble this summer. Please fill out
-          the registration form below to help us make the event magical for you.
-          Feel free to contact{' '}
-          <a href="mailto:assemble@hackclub.com">assemble@hackclub.com</a> for
-          help!
-        </Box>
         {manifest.questions.map((sectionItem, sectionIndex) => {
           if (typeof sectionItem.check != 'undefined') {
             if (sectionItem.check(data)) {
@@ -126,7 +103,10 @@ export default function Register({ notFound, registrationRecord, params }) {
           return (
             <Box
               key={sectionIndex}
-              sx={{ mb: sectionIndex == manifest.questions.length -1 ? 4 : 5, mt: sectionIndex == 0 ? 4 : 5 }}
+              sx={{
+                mb: sectionIndex == manifest.questions.length - 1 ? 4 : 5,
+                mt: sectionIndex == 0 ? 4 : 5
+              }}
             >
               <Box sx={{ textAlign: 'left', mb: 2 }}>
                 <Text sx={{ color: 'red', fontSize: '27px', fontWeight: 800 }}>
@@ -203,6 +183,8 @@ export default function Register({ notFound, registrationRecord, params }) {
                             ? Textarea
                             : item.inputType == 'checkbox'
                             ? Input
+                            : item.inputType == 'number'
+                            ? Input
                             : Select
                         }
                         type={item.inputType}
@@ -264,8 +246,11 @@ export default function Register({ notFound, registrationRecord, params }) {
         })}
         <Button
           onClick={() => {
-            setDisabled(true);
-            toast.notify('Submitting your registration...', { duration: 60, title: 'Working...' })
+            setDisabled(true)
+            toast.notify('Submitting your registration...', {
+              duration: 60,
+              title: 'Working...'
+            })
             console.log(data)
             fetch('/api/submit', {
               method: 'POST',
@@ -275,20 +260,40 @@ export default function Register({ notFound, registrationRecord, params }) {
               body: JSON.stringify(data)
             })
               .then(response => response.json())
-              .then(
-                ({ success, error }) => {
-                  setDisabled(false);
-                  success ? window.location.replace('/success') : toast.notify(error, { type: 'error', title: 'Oops!', duration: 60 })
-                }
-              )
+              .then(({ success, error }) => {
+                setDisabled(false)
+                success
+                  ? window.location.replace('/success')
+                  : toast.notify(error, {
+                      type: 'error',
+                      title: 'Oops!',
+                      duration: 60
+                    })
+              })
           }}
           style={{
-            filter: disabled ? 'grayscale(1)' : 'grayscale(0)',
+            filter: disabled ? 'grayscale(1)' : 'grayscale(0)'
           }}
           disabled={disabled}
         >
           Submit
         </Button>
+      </Card>
+      <Card px={[4, 4]} py={[4, 4]} mt={4}>
+        <Box sx={{ textAlign: 'left', mb: 2 }}>
+          <Text sx={{ fontSize: '27px' }}>
+            Special thanks to Hack Club for{' '}
+            <Text
+              as={'a'}
+              href="https://github.com/hackclub/assemble"
+              target="_blank"
+              sx={{ color: 'black !important' }}
+            >
+              open sourcing
+            </Text>{' '}
+            their registration website.
+          </Text>
+        </Box>
       </Card>
     </Container>
   )

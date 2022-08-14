@@ -41,21 +41,9 @@ const Meta = ({
     )}
     <meta key="theme_color" name="theme-color" content={color} />
     <meta key="tile_color" name="msapplication-TileColor" content={color} />
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="/favicon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/favicon.png"
-    />
-    <link
-      rel="favicon"
-      type="image/png"
-      href="/favicon.png"
-    />
+    <link rel="shortcut icon" type="image/png" href="/wird.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="favicon" type="image/svg+xml" href="/favicon.png" />
     {manifest && <link key="manifest" rel="manifest" href={manifest} />}
     {children}
   </ElementType>

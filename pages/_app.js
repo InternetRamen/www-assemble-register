@@ -17,10 +17,10 @@ export default class App extends NextApp {
       <ThemeProvider theme={theme}>
         <Meta
           as={Head}
-          name="Join Us At Assemble!" // site name
-          title="Join Us At Assemble!" // page title
+          name="Join us for poolesville_hacks" // site name
+          title="Join us for poolesville_hacks" // page title
           description="" // page description
-          image="https://cloud-bs04w09ot-hack-club-bot.vercel.app/0image.png" // large summary card image URL
+          image="/arjun-bg.jpg" // large summary card image URL
           color="#ec3750" // theme color
         />
         <Flag />
@@ -43,13 +43,15 @@ export default class App extends NextApp {
               zIndex: 1,
               height: '100vh',
               width: '100vw',
-              backgroundImage: 'url("/msw-bg.png")',
+              backgroundImage: 'url("/arjun-bg.jpg")',
+              backdropFilter: 'blur(10px)',
               backgroundSize: 'cover',
               backgroundPosition: 'bottom-left',
               overflowY: 'scroll'
             }}
           >
-            <Component {...pageProps} />
+            <Component {...pageProps}/>
+
           </div>
         </div>
         <style>
