@@ -36,11 +36,7 @@ export default function Register({ notFound, registrationRecord, params }) {
     return <Error statusCode="404" />
   }
   return (
-    <Container
-      py={4}
-      variant="copy"
-    
-    >
+    <Container py={4} variant="copy">
       <ToastContainer align="right" />
       <Card
         px={[4, 4]}
@@ -280,8 +276,8 @@ export default function Register({ notFound, registrationRecord, params }) {
         </Button>
       </Card>
       <Card px={[4, 4]} py={[4, 4]} mt={4}>
-        <Box sx={{ textAlign: 'left', mb: 2 }}>
-          <Text sx={{ fontSize: '27px' }}>
+        <Box>
+          <Text sx={{ fontSize: '16px' }}>
             Special thanks to Hack Club for{' '}
             <Text
               as={'a'}
@@ -292,6 +288,8 @@ export default function Register({ notFound, registrationRecord, params }) {
               open sourcing
             </Text>{' '}
             their registration website.
+            <br></br>
+            Picture credits to Arjun Rao
           </Text>
         </Box>
       </Card>
